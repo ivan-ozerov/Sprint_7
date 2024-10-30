@@ -6,31 +6,6 @@ from data import TestData
 from data import URLs
 
 class Helper:
-    # метод регистрации нового курьера возвращает список из логина и пароля
-    # если регистрация не удалась, возвращает пустой список
-    @classmethod
-    def register_new_courier_and_return_login_password(cls):
-        # метод генерирует строку, состоящую только из букв нижнего регистра, в качестве параметра передаём длину строки
-        payload = cls.generate_random_correct_credentials()
-
-        # отправляем запрос на регистрацию курьера и сохраняем ответ в переменную response
-        response = requests.post('https://qa-scooter.praktikum-services.ru/api/v1/courier', data=payload)
-
-        # создаём список, чтобы метод мог его вернуть
-        # login_pass = []
-
-        # если регистрация прошла успешно (код ответа 201), добавляем в список логин и пароль курьера
-        # if response.status_code == 201:
-        #     login_pass.append(payload['login'])
-        #     login_pass.append(payload['password'])
-        #     login_pass.append(payload[first_name])
-
-        # возвращаем список
-        # return login_pass
-        if response.status_code == 201:
-            return payload
-        else:
-            return response.text
 
     @classmethod
     def generate_random_correct_credentials(cls):

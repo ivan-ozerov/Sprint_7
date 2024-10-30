@@ -36,5 +36,3 @@ class TestData:
             {'id' : ''},
             {'id' : 'wrong_id_type'}
         ]
-
-print(TestData.CORRECT_COURIER_CREDENTIALS)

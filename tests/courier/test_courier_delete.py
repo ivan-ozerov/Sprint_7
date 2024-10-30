@@ -19,16 +19,11 @@ class TestCourierDelete:
         response = CourierMethods.courier_delete({"id": response_login.json()['id']})
         assert response.status_code == 200 and response.json() == {'ok': True}
 
-    # @pytest.mark.parametrize('invalid_payload', CourierMethods.get_invalid_payload__for_delete())
-    # def test_delete_courier__invalid_request(self, invalid_payload):
-    #     response = CourierMethods.courier_delete(invalid_payload)
-    #     assert response.status_code == 500 and response.json() == {"message":  "Недостаточно данных для удаления курьера"}
-
     def test_delete_courier__empty_id(self):
         response = CourierMethods.courier_delete(TestData.INVALID_DATA_FOR_DELETE[0])
         assert response.status_code == 404 and response.json() == {"code": 404, "message": "Not Found."}
 
 
     def test_delete_courier__invalid_type_id(self):
-        response = CourierMethods.courier_delete(TestData.INVALID_DATA_FOR_DELETE[0])
-        assert response.status_code == 404 and response.json() == {"code": 404, "message": "Not Found."}
+        response = CourierMethods.courier_delete(TestData.INVALID_DATA_FOR_DELETE[1])
+        assert response.status_code == 500 and response.json() == {'code' : 500, "message":  'invalid input syntax for type integer: "wrong_id_type"'}
