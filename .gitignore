@@ -1,0 +1,6 @@
+chto_testirovat
+__pycache__
+pytest_out
+.venv
+.vscode
+.pytest_cache
